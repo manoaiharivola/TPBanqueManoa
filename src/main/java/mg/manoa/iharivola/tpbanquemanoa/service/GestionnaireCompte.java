@@ -5,7 +5,7 @@
 package mg.manoa.iharivola.tpbanquemanoa.service;
 
 import jakarta.annotation.sql.DataSourceDefinition;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -31,7 +31,7 @@ import mg.manoa.iharivola.tpbanquemanoa.entity.CompteBancaire;
             "driverClass=com.mysql.cj.jdbc.Driver"
         }
 )
-@RequestScoped
+@ApplicationScoped
 public class GestionnaireCompte {
 
     @PersistenceContext
@@ -46,5 +46,10 @@ public class GestionnaireCompte {
     public List<CompteBancaire> getAllComptes() {
         TypedQuery query = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
         return query.getResultList();
+    }
+
+    public long nbComptes() {
+        TypedQuery<Long> query = em.createQuery("select count(c) from CompteBancaire c", Long.class);
+        return query.getSingleResult();
     }
 }
