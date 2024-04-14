@@ -10,6 +10,7 @@ import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
 import mg.manoa.iharivola.tpbanquemanoa.entity.CompteBancaire;
+import mg.manoa.iharivola.tpbanquemanoa.jsf.util.Util;
 import mg.manoa.iharivola.tpbanquemanoa.service.GestionnaireCompte;
 
 /**
@@ -36,5 +37,11 @@ public class ListeComptes implements Serializable {
             listeComptes = gestionnaireCompte.getAllComptes();
         }
         return listeComptes;
+    }
+
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        gestionnaireCompte.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Le compte de " + compteBancaire.getNom() + " a été supprimé");
+        return "listeComptes?faces-redirect=true";
     }
 }
