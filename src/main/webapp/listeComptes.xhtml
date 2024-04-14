@@ -52,6 +52,13 @@
                                 <h:graphicImage name="images/del.png"/>
                             </h:commandLink>
                         </p:column>
+
+                        <p:column>
+                            <h:link title="Modifier nom"
+                                    value="Modifier nom"
+                                    outcome="/modifierNom?id=#{item.id}"/>
+                        </p:column>
+
                     </p:dataTable>
                 </h:form>
                 <h:messages/>
