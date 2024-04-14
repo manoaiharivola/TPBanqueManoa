@@ -8,12 +8,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import java.io.Serializable;
 
 /**
  *
  * @author My PC
  */
+@NamedQuery(name = "CompteBancaire.findAll", query = "select c from CompteBancaire c")
 @Entity
 public class CompteBancaire implements Serializable {
 
