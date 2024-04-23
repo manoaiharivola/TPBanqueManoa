@@ -4,12 +4,17 @@
  */
 package mg.manoa.iharivola.tpbanquemanoa.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,6 +31,9 @@ public class CompteBancaire implements Serializable {
 
     private String nom;
     private int solde;
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+    private List<OperationBancaire> operations = new ArrayList<>(); 
 
     public Long getId() {
         return id;
@@ -46,6 +54,10 @@ public class CompteBancaire implements Serializable {
     public void setSolde(int solde) {
         this.solde = solde;
     }
+    
+    public List<OperationBancaire> getOperations() {  
+      return operations;  
+    }  
 
     public CompteBancaire(String nom, int solde) {
         this.nom = nom;
