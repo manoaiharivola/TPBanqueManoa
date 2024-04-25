@@ -79,7 +79,7 @@ public class CompteBancaire implements Serializable {
         } else {
             solde = 0;
         }
-        operations.add(new OperationBancaire("Débit", montant));
+        operations.add(new OperationBancaire("Débit", -montant));
     }
 
     @Override
