@@ -59,6 +59,16 @@
                                     outcome="/modifierNom?id=#{item.id}"/>
                         </p:column>
 
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText escape="false" value="Historique&lt;br/>opérations"/>
+                            </f:facet>
+                            <h:link 
+                                title="Voir les historiques des opérations sur le compte de #{item.nom}"
+                                value="Détails"
+                                outcome="/operations?id=#{item.id}" />
+                        </p:column>
+
                     </p:dataTable>
                 </h:form>
                 <h:messages/>
